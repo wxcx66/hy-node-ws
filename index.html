@@ -1,722 +1,873 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Green Network - Protect Earth</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Little Sprout · Preschool Education Blog</title>
     <style>
+        /* ===== Global Reset & Base ===== */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        :root {
-            --primary: #2e7d32;
-            --secondary: #4caf50;
-            --accent: #8bc34a;
-            --light: #e8f5e9;
-            --dark: #1b5e20;
-            --text: #333333;
-            --white: #ffffff;
         }
 
         body {
-            background-color: var(--light);
-            color: var(--text);
-            line-height: 1.6;
+            font-family: 'Segoe UI', 'PingFang SC', Roboto, 'Helvetica Neue', sans-serif;
+            background: #fef9f0;
+            color: #3d2e26;
+            line-height: 1.7;
         }
 
-        header {
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            color: var(--white);
-            padding: 1rem 0;
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 16px;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* ===== Container ===== */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ===== Navbar ===== */
+        .navbar {
+            background: #ffffffdd;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 2px solid #f3e1d2;
+            padding: 16px 0;
             position: sticky;
             top: 0;
             z-index: 100;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
         }
 
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .nav-container {
+        .navbar .container {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
         }
 
         .logo {
+            font-size: 26px;
+            font-weight: 700;
+            color: #d97a5a;
+            letter-spacing: 1px;
             display: flex;
             align-items: center;
-            gap: 10px;
-            font-size: 1.8rem;
-            font-weight: 700;
+            gap: 8px;
         }
 
-        .logo i {
-            font-size: 2rem;
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-        }
-
-        nav ul li {
-            margin-left: 2rem;
-        }
-
-        nav ul li a {
-            color: var(--white);
-            text-decoration: none;
+        .logo span {
+            background: #fce6d8;
+            padding: 4px 12px;
+            border-radius: 40px;
+            font-size: 14px;
             font-weight: 500;
-            transition: all 0.3s ease;
-            padding: 0.5rem 0;
+            color: #b55c3c;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            font-weight: 500;
+            font-size: 16px;
+        }
+
+        .nav-links a {
             position: relative;
+            padding: 4px 0;
+            color: #5a4036;
         }
 
-        nav ul li a:hover {
-            color: var(--accent);
-        }
-
-        nav ul li a::after {
+        .nav-links a::after {
             content: '';
             position: absolute;
-            bottom: 0;
+            bottom: -2px;
             left: 0;
             width: 0;
-            height: 2px;
-            background-color: var(--accent);
-            transition: width 0.3s ease;
+            height: 3px;
+            background: #e9b18c;
+            border-radius: 4px;
+            transition: width 0.25s ease;
         }
 
-        nav ul li a:hover::after {
+        .nav-links a:hover::after {
             width: 100%;
         }
 
+        .nav-links a:hover {
+            color: #c46a48;
+        }
+
+        /* ===== Hamburger (mobile) ===== */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 6px;
+        }
+
+        .menu-toggle span {
+            width: 28px;
+            height: 3px;
+            background: #5a4036;
+            border-radius: 6px;
+            transition: 0.3s;
+        }
+
+        /* ===== Hero ===== */
         .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), url('https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2073&q=80');
-            background-size: cover;
-            background-position: center;
-            height: 80vh;
+            padding: 60px 0 50px;
+            background: linear-gradient(145deg, #fef3ea 0%, #fce8dc 100%);
+            border-radius: 0 0 48px 48px;
+            margin-bottom: 40px;
+        }
+
+        .hero .container {
             display: flex;
             align-items: center;
-            text-align: center;
-            color: var(--white);
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 40px;
         }
 
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
+        .hero-text {
+            flex: 1 1 380px;
         }
 
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        }
-
-        .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-        }
-
-        .btn {
+        .hero-text .badge {
             display: inline-block;
-            background-color: var(--accent);
-            color: var(--white);
-            padding: 0.8rem 2rem;
-            border-radius: 50px;
-            text-decoration: none;
+            background: #e9b18c;
+            color: #fff;
+            font-size: 14px;
             font-weight: 600;
-            transition: all 0.3s ease;
+            padding: 6px 18px;
+            border-radius: 40px;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+            box-shadow: 0 4px 10px rgba(233, 177, 140, 0.3);
+        }
+
+        .hero-text h1 {
+            font-size: 42px;
+            font-weight: 800;
+            color: #3d2e26;
+            line-height: 1.2;
+            margin-bottom: 16px;
+        }
+
+        .hero-text h1 span {
+            color: #d97a5a;
+        }
+
+        .hero-text p {
+            font-size: 18px;
+            color: #6b4f42;
+            max-width: 480px;
+            margin-bottom: 24px;
+        }
+
+        .hero-btn {
+            display: inline-block;
+            background: #d97a5a;
+            color: #fff;
+            font-weight: 600;
+            font-size: 17px;
+            padding: 14px 36px;
+            border-radius: 60px;
+            box-shadow: 0 8px 24px rgba(217, 122, 90, 0.35);
+            transition: 0.2s;
             border: none;
             cursor: pointer;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
-        .btn:hover {
-            background-color: var(--primary);
-            transform: translateY(-3px);
-            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        .hero-btn:hover {
+            background: #c46a48;
+            transform: translateY(-2px);
+            box-shadow: 0 12px 28px rgba(196, 106, 72, 0.4);
         }
 
-        section {
-            padding: 5rem 0;
+        .hero-image {
+            flex: 1 1 300px;
+            display: flex;
+            justify-content: center;
         }
 
+        .hero-image svg {
+            width: 100%;
+            max-width: 380px;
+            height: auto;
+            filter: drop-shadow(0 12px 30px rgba(217, 122, 90, 0.15));
+        }
+
+        /* ===== Blog Grid ===== */
         .section-title {
-            text-align: center;
-            margin-bottom: 3rem;
+            font-size: 32px;
+            font-weight: 700;
+            color: #3d2e26;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
         }
 
-        .section-title h2 {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 1rem;
-            position: relative;
-            display: inline-block;
+        .section-title small {
+            font-size: 16px;
+            font-weight: 400;
+            color: #8f7162;
         }
 
-        .section-title h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background-color: var(--accent);
-            border-radius: 2px;
+        .section-sub {
+            color: #6b4f42;
+            margin-bottom: 32px;
+            font-size: 17px;
         }
 
-        .section-title p {
-            color: var(--text);
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        .about-content {
+        .blog-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 32px;
+            margin-bottom: 48px;
+        }
+
+        .blog-card {
+            background: #fff;
+            border-radius: 28px;
+            padding: 28px 24px 30px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+            transition: 0.25s ease;
+            border: 1px solid #f3e4da;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 16px 48px rgba(217, 122, 90, 0.12);
+            border-color: #e9cbb8;
+        }
+
+        .card-icon {
+            font-size: 42px;
+            margin-bottom: 12px;
+            background: #fcf1ea;
+            width: 64px;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 20px;
+        }
+
+        .blog-card .tag {
+            display: inline-block;
+            background: #f3e4da;
+            color: #6b4f42;
+            font-size: 13px;
+            font-weight: 600;
+            padding: 4px 14px;
+            border-radius: 40px;
+            margin-bottom: 12px;
+            align-self: flex-start;
+        }
+
+        .blog-card h3 {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #3d2e26;
+        }
+
+        .blog-card p {
+            color: #6b4f42;
+            font-size: 15px;
+            flex: 1;
+            margin-bottom: 16px;
+        }
+
+        .blog-card .meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+            color: #9a7d6c;
+            border-top: 1px solid #f3e4da;
+            padding-top: 16px;
+            margin-top: auto;
+        }
+
+        .blog-card .meta .read-more {
+            font-weight: 600;
+            color: #d97a5a;
+        }
+
+        .blog-card .meta .read-more:hover {
+            color: #b55c3c;
+        }
+
+        /* ===== Featured Card ===== */
+        .featured-card {
+            background: #fff7f1;
+            border-radius: 32px;
+            padding: 40px 44px;
+            margin-bottom: 48px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 36px;
+            border: 1px solid #f3e0d2;
+            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.04);
+        }
+
+        .featured-card .fc-content {
+            flex: 2 1 320px;
+        }
+
+        .featured-card .fc-image {
+            flex: 1 1 240px;
+            background: #fce6d8;
+            border-radius: 24px;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 160px;
+        }
+
+        .featured-card .fc-image svg {
+            width: 100%;
+            max-width: 200px;
+            height: auto;
+        }
+
+        .featured-card .tag-featured {
+            background: #d97a5a;
+            color: #fff;
+            font-size: 13px;
+            font-weight: 600;
+            padding: 4px 18px;
+            border-radius: 40px;
+            display: inline-block;
+            margin-bottom: 12px;
+        }
+
+        .featured-card h2 {
+            font-size: 30px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .featured-card p {
+            color: #6b4f42;
+            font-size: 16px;
+            max-width: 500px;
+            margin-bottom: 20px;
+        }
+
+        .featured-card .btn-outline {
+            display: inline-block;
+            border: 2px solid #d97a5a;
+            color: #d97a5a;
+            font-weight: 600;
+            padding: 10px 30px;
+            border-radius: 60px;
+            transition: 0.2s;
+        }
+
+        .featured-card .btn-outline:hover {
+            background: #d97a5a;
+            color: #fff;
+        }
+
+        /* ===== About & Subscribe ===== */
+        .about-section {
+            background: #fff7f1;
+            border-radius: 40px;
+            padding: 48px 44px;
+            margin-bottom: 40px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 32px;
             align-items: center;
         }
 
-        .about-img {
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        .about-text {
+            flex: 2 1 300px;
         }
 
-        .about-img img {
-            width: 100%;
-            height: auto;
-            display: block;
-            transition: transform 0.5s ease;
-        }
-
-        .about-img:hover img {
-            transform: scale(1.05);
-        }
-
-        .about-text h3 {
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
-            color: var(--dark);
+        .about-text h2 {
+            font-size: 30px;
+            font-weight: 700;
+            margin-bottom: 12px;
         }
 
         .about-text p {
-            margin-bottom: 1.5rem;
+            color: #6b4f42;
+            font-size: 16px;
+            max-width: 520px;
         }
 
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 2rem;
-            margin-top: 3rem;
+        .about-subscribe {
+            flex: 1 1 260px;
+            background: #fff;
+            padding: 28px 24px;
+            border-radius: 28px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04);
+            border: 1px solid #f3e4da;
         }
 
-        .stat-item {
-            text-align: center;
-            padding: 2rem 1rem;
-            background-color: var(--white);
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease;
+        .about-subscribe h4 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 8px;
         }
 
-        .stat-item:hover {
-            transform: translateY(-10px);
+        .about-subscribe p {
+            font-size: 14px;
+            color: #8f7162;
+            margin-bottom: 16px;
         }
 
-        .stat-item i {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 1rem;
-        }
-
-        .stat-item h3 {
-            font-size: 2.5rem;
-            color: var(--dark);
-            margin-bottom: 0.5rem;
-        }
-
-        .stat-item p {
-            color: var(--text);
-        }
-
-        .initiatives {
-            background-color: var(--white);
-        }
-
-        .initiatives-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-        }
-
-        .initiative-card {
-            background-color: var(--light);
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease;
-        }
-
-        .initiative-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .initiative-img {
-            height: 200px;
-            overflow: hidden;
-        }
-
-        .initiative-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .initiative-card:hover .initiative-img img {
-            transform: scale(1.1);
-        }
-
-        .initiative-content {
-            padding: 1.5rem;
-        }
-
-        .initiative-content h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--dark);
-        }
-
-        .initiative-content p {
-            margin-bottom: 1.5rem;
-        }
-
-        .cta {
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            color: var(--white);
-            text-align: center;
-            padding: 5rem 0;
-        }
-
-        .cta h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .cta p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .cta .btn {
-            background-color: var(--white);
-            color: var(--primary);
-        }
-
-        .cta .btn:hover {
-            background-color: var(--accent);
-            color: var(--white);
-        }
-
-        footer {
-            background-color: var(--dark);
-            color: var(--white);
-            padding: 3rem 0 1rem;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .footer-column h3 {
-            font-size: 1.3rem;
-            margin-bottom: 1.5rem;
-            position: relative;
-            padding-bottom: 10px;
-        }
-
-        .footer-column h3::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 40px;
-            height: 2px;
-            background-color: var(--accent);
-        }
-
-        .footer-column p {
-            margin-bottom: 1rem;
-        }
-
-        .footer-links {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 0.8rem;
-        }
-
-        .footer-links li a {
-            color: var(--light);
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .footer-links li a:hover {
-            color: var(--accent);
-            padding-left: 5px;
-        }
-
-        .social-links {
+        .subscribe-form {
             display: flex;
-            gap: 1rem;
+            flex-wrap: wrap;
+            gap: 10px;
         }
 
-        .social-links a {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            color: var(--white);
-            text-decoration: none;
-            transition: all 0.3s ease;
+        .subscribe-form input {
+            flex: 1 1 140px;
+            border: 2px solid #f3e4da;
+            border-radius: 60px;
+            padding: 12px 18px;
+            font-size: 15px;
+            background: #fef9f4;
+            outline: none;
+            transition: 0.2s;
         }
 
-        .social-links a:hover {
-            background-color: var(--accent);
-            transform: translateY(-5px);
+        .subscribe-form input:focus {
+            border-color: #d97a5a;
         }
 
-        .copyright {
-            text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .mobile-menu {
-            display: none;
-            font-size: 1.5rem;
+        .subscribe-form button {
+            background: #d97a5a;
+            color: #fff;
+            font-weight: 600;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 60px;
             cursor: pointer;
+            transition: 0.2s;
+            font-size: 15px;
         }
 
-        @media (max-width: 992px) {
-            .about-content {
-                grid-template-columns: 1fr;
-            }
-            
-            .initiatives-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .footer-content {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .stats {
-                grid-template-columns: repeat(2, 1fr);
-            }
+        .subscribe-form button:hover {
+            background: #c46a48;
         }
 
+        /* ===== Footer ===== */
+        footer {
+            background: #3d2e26;
+            color: #eeded3;
+            padding: 40px 0 28px;
+            border-radius: 40px 40px 0 0;
+            margin-top: 40px;
+        }
+
+        footer .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 32px;
+        }
+
+        .footer-col h4 {
+            color: #fff;
+            font-size: 18px;
+            margin-bottom: 14px;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 8px;
+        }
+
+        .footer-col ul li a {
+            color: #d4bfb2;
+            font-size: 15px;
+        }
+
+        .footer-col ul li a:hover {
+            color: #f3d5c2;
+        }
+
+        .footer-col .social a {
+            display: inline-block;
+            margin-right: 14px;
+            font-size: 22px;
+            color: #d4bfb2;
+        }
+
+        .footer-col .social a:hover {
+            color: #e9b18c;
+        }
+
+        .footer-bottom {
+            margin-top: 32px;
+            border-top: 1px solid #5a4036;
+            padding-top: 20px;
+            text-align: center;
+            font-size: 14px;
+            color: #b89f8e;
+            width: 100%;
+        }
+
+        /* ===== Responsive ===== */
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
+            .navbar .container {
+                flex-wrap: wrap;
             }
-            
-            .hero p {
-                font-size: 1.1rem;
-            }
-            
-            nav ul {
+
+            .nav-links {
                 display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
                 width: 100%;
-                background-color: var(--primary);
                 flex-direction: column;
-                padding: 1rem 0;
-                text-align: center;
-                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+                gap: 14px;
+                padding: 20px 0 10px;
+                border-top: 1px solid #f3e1d2;
+                margin-top: 12px;
             }
-            
-            nav ul.active {
+
+            .nav-links.open {
                 display: flex;
             }
-            
-            nav ul li {
-                margin: 0;
-                padding: 0.8rem 0;
+
+            .menu-toggle {
+                display: flex;
             }
-            
-            .mobile-menu {
-                display: block;
+
+            .hero-text h1 {
+                font-size: 32px;
             }
-            
-            .initiatives-grid {
-                grid-template-columns: 1fr;
+
+            .hero {
+                padding: 40px 0 30px;
             }
-            
-            .footer-content {
-                grid-template-columns: 1fr;
+
+            .section-title {
+                font-size: 26px;
+                flex-wrap: wrap;
             }
-            
-            .stats {
-                grid-template-columns: 1fr;
+
+            .featured-card {
+                padding: 28px 20px;
+            }
+
+            .featured-card h2 {
+                font-size: 24px;
+            }
+
+            .about-section {
+                padding: 32px 20px;
+            }
+
+            footer .container {
+                flex-direction: column;
+                gap: 24px;
             }
         }
 
-        /* Animation for stats counter */
-        .counter {
-            transition: all 0.5s ease;
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 16px;
+            }
+
+            .blog-grid {
+                gap: 20px;
+            }
+
+            .blog-card {
+                padding: 20px 18px;
+            }
+
+            .hero-text h1 {
+                font-size: 28px;
+            }
+
+            .hero-btn {
+                padding: 12px 28px;
+                font-size: 15px;
+            }
+        }
+
+        /* ===== Utility ===== */
+        .text-muted {
+            color: #8f7162;
+        }
+
+        .mt-1 {
+            margin-top: 8px;
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="container nav-container">
+
+    <!-- ===== Navbar ===== -->
+    <header class="navbar">
+        <div class="container">
             <div class="logo">
-                <i class="fas fa-seedling"></i>
-                <span>Green Network</span>
+                🌱 Little Sprout
+                <span>Preschool</span>
             </div>
-            <nav>
-                <div class="mobile-menu">
-                    <i class="fas fa-bars"></i>
-                </div>
-                <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#initiatives">Initiatives</a></li>
-                    <li><a href="#get-involved">Get Involved</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
+            <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+            <nav class="nav-links" id="navLinks">
+                <a href="#">Home</a>
+                <a href="#">Articles</a>
+                <a href="#">Parenting Guide</a>
+                <a href="#">About</a>
+                <a href="#">Contact</a>
             </nav>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="container hero-content">
-            <h1>Protect Our Planet, Preserve Our Future</h1>
-            <p>Join the global movement to create a sustainable world through conservation, education, and community action.</p>
-            <a href="#get-involved" class="btn">Join Our Network</a>
+    <!-- ===== Hero ===== -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-text">
+                <div class="badge">🧸 Love · Growth · Joy</div>
+                <h1>Nurture Childhood<br /><span>with Love & Science</span></h1>
+                <p>Dedicated to evidence-based preschool education for ages 2–6 — parenting tips, playful learning, emotional development, and healthy habits.</p>
+                <a href="#" class="hero-btn">📚 Explore More</a>
+            </div>
+            <div class="hero-image">
+                <!-- Cute illustration SVG -->
+                <svg viewBox="0 0 400 340" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="200" cy="200" r="120" fill="#FCE6D8" opacity="0.5" />
+                    <circle cx="200" cy="190" r="80" fill="#FCE6D8" />
+                    <circle cx="200" cy="180" r="60" fill="#FFEAD9" />
+                    <!-- Sapling -->
+                    <path d="M200 130 L200 200 M200 160 L170 180 M200 160 L230 180" stroke="#D97A5A" stroke-width="6" stroke-linecap="round" />
+                    <circle cx="200" cy="120" r="30" fill="#E9B18C" />
+                    <circle cx="190" cy="112" r="10" fill="#FCE6D8" />
+                    <circle cx="210" cy="112" r="10" fill="#FCE6D8" />
+                    <!-- Stars -->
+                    <path d="M130 230 L135 220 L140 230 L150 232 L140 240 L142 250 L130 244 L118 250 L120 240 L110 232 L120 230 Z" fill="#E9B18C" opacity="0.7" />
+                    <path d="M270 200 L274 192 L278 200 L286 202 L278 208 L280 216 L270 210 L260 216 L262 208 L254 202 L262 200 Z" fill="#E9B18C" opacity="0.5" />
+                    <!-- Clouds -->
+                    <path d="M80 130 Q90 112 110 114 Q130 108 140 124 Q158 118 160 136 Q170 150 150 156 L90 156 Q70 150 80 130 Z" fill="#FFF" opacity="0.6" />
+                    <path d="M290 110 Q300 96 318 100 Q332 92 340 108 Q354 104 356 120 Q362 134 346 138 L300 138 Q284 132 290 110 Z" fill="#FFF" opacity="0.5" />
+                    <!-- Smiley -->
+                    <circle cx="185" cy="180" r="4" fill="#D97A5A" />
+                    <circle cx="215" cy="180" r="4" fill="#D97A5A" />
+                    <path d="M190 192 Q200 202 210 192" stroke="#D97A5A" stroke-width="3" stroke-linecap="round" fill="none" />
+                </svg>
+            </div>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about">
-        <div class="container">
+    <!-- ===== Blog Content ===== -->
+    <div class="container">
+
+        <!-- Latest Articles -->
+        <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap;">
             <div class="section-title">
-                <h2>About Green Network</h2>
-                <p>We are a global community dedicated to environmental protection and sustainable development.</p>
+                📖 Featured Posts <small>· Preschool Education</small>
             </div>
-            <div class="about-content">
-                <div class="about-img">
-                    <img src="https://images.unsplash.com/photo-1507591064344-4c6ce005b128?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Team planting trees">
+            <a href="#" style="color: #d97a5a; font-weight: 500; font-size: 15px;">View All →</a>
+        </div>
+        <p class="section-sub">From emotional coaching to language development — every article is crafted with care.</p>
+
+        <div class="blog-grid">
+
+            <!-- Card 1 -->
+            <article class="blog-card">
+                <div class="card-icon">🧩</div>
+                <span class="tag">Cognitive Development</span>
+                <h3>The 2–4 Year Old Sensitive Period: How to Seize Learning Windows</h3>
+                <p>Is your child suddenly being "difficult"? It might be the order sensitivity phase. Three practical strategies to guide them gently.</p>
+                <div class="meta">
+                    <span>📅 Mar 12, 2025 · 6 min</span>
+                    <a href="#" class="read-more">Read →</a>
                 </div>
-                <div class="about-text">
-                    <h3>Our Mission</h3>
-                    <p>Green Network is committed to creating a sustainable future by protecting natural ecosystems, promoting renewable energy, and empowering communities to take environmental action.</p>
-                    <p>Founded in 2010, we've grown from a small grassroots organization to an international network with over 50,000 members across 120 countries.</p>
-                    <p>Our approach combines scientific research, community engagement, and policy advocacy to address the most pressing environmental challenges of our time.</p>
-                    <a href="#" class="btn">Learn More</a>
+            </article>
+
+            <!-- Card 2 -->
+            <article class="blog-card">
+                <div class="card-icon">🎨</div>
+                <span class="tag">Art & Creativity</span>
+                <h3>Art at Home: 10 Zero-Prep Creative Games</h3>
+                <p>Paint, clay, natural materials — no expensive supplies needed. Spark imagination and fine motor skills with these simple ideas.</p>
+                <div class="meta">
+                    <span>📅 Mar 8, 2025 · 8 min</span>
+                    <a href="#" class="read-more">Read →</a>
                 </div>
+            </article>
+
+            <!-- Card 3 -->
+            <article class="blog-card">
+                <div class="card-icon">📚</div>
+                <span class="tag">Language Development</span>
+                <h3>The Ultimate Guide to Shared Reading: Book Selection & Interaction Tips</h3>
+                <p>From board books to picture books — an age-by-age book list plus 5 questioning techniques to make storytime more effective.</p>
+                <div class="meta">
+                    <span>📅 Mar 5, 2025 · 7 min</span>
+                    <a href="#" class="read-more">Read →</a>
+                </div>
+            </article>
+
+            <!-- Card 4 -->
+            <article class="blog-card">
+                <div class="card-icon">😌</div>
+                <span class="tag">Emotional & Social</span>
+                <h3>When Your Child Has a Meltdown: The Emotion Coach Approach in 4 Steps</h3>
+                <p>No yelling, no giving in. Use the "emotion coach" method to help your child recognize feelings and build a sense of security.</p>
+                <div class="meta">
+                    <span>📅 Mar 1, 2025 · 6 min</span>
+                    <a href="#" class="read-more">Read →</a>
+                </div>
+            </article>
+
+            <!-- Card 5 -->
+            <article class="blog-card">
+                <div class="card-icon">🌿</div>
+                <span class="tag">Outdoor & Nature</span>
+                <h3>Nature Education: 6 Exploration Activities Right in the Park</h3>
+                <p>A fallen leaf, a smooth stone — every object is a learning tool. Engage all five senses and nurture curiosity outdoors.</p>
+                <div class="meta">
+                    <span>📅 Feb 25, 2025 · 5 min</span>
+                    <a href="#" class="read-more">Read →</a>
+                </div>
+            </article>
+
+            <!-- Card 6 -->
+            <article class="blog-card">
+                <div class="card-icon">🛏️</div>
+                <span class="tag">Daily Routines</span>
+                <h3>Gentle Yet Firm: Building a Predictable Daily Rhythm</h3>
+                <p>Say goodbye to bedtime battles! Use a visual schedule and playful strategies to help your child transition smoothly through the day.</p>
+                <div class="meta">
+                    <span>📅 Feb 20, 2025 · 7 min</span>
+                    <a href="#" class="read-more">Read →</a>
+                </div>
+            </article>
+
+        </div>
+
+        <!-- Featured Card -->
+        <div class="featured-card">
+            <div class="fc-content">
+                <span class="tag-featured">⭐ Editor's Pick</span>
+                <h2>Little Sprout Parent Workshop: How to Read Your Child's Drawings</h2>
+                <p>A child's scribbles hold clues to their emotions and thinking. Every picture tells a story — learn to interpret colors, lines, and composition with insights from art therapy.</p>
+                <a href="#" class="btn-outline">Start Learning →</a>
             </div>
-            <div class="stats">
-                <div class="stat-item">
-                    <i class="fas fa-tree"></i>
-                    <h3 class="counter" data-target="2500000">0</h3>
-                    <p>Trees Planted</p>
-                </div>
-                <div class="stat-item">
-                    <i class="fas fa-users"></i>
-                    <h3 class="counter" data-target="50000">0</h3>
-                    <p>Active Members</p>
-                </div>
-                <div class="stat-item">
-                    <i class="fas fa-globe-americas"></i>
-                    <h3 class="counter" data-target="120">0</h3>
-                    <p>Countries Reached</p>
-                </div>
-                <div class="stat-item">
-                    <i class="fas fa-recycle"></i>
-                    <h3 class="counter" data-target="1500">0</h3>
-                    <p>Cleanup Projects</p>
-                </div>
+            <div class="fc-image">
+                <svg viewBox="0 0 200 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="20" y="30" width="160" height="100" rx="16" fill="#FFF" stroke="#D97A5A" stroke-width="2" />
+                    <circle cx="70" cy="70" r="18" fill="#E9B18C" opacity="0.7" />
+                    <circle cx="130" cy="80" r="14" fill="#FCE6D8" stroke="#D97A5A" stroke-width="1.5" />
+                    <path d="M40 110 L70 90 L90 100 L110 80 L140 110" stroke="#D97A5A" stroke-width="2.5" stroke-linecap="round" fill="none" />
+                    <path d="M50 120 L150 120" stroke="#D97A5A" stroke-width="2" stroke-dasharray="4 4" />
+                </svg>
             </div>
         </div>
-    </section>
 
-    <!-- Initiatives Section -->
-    <section class="initiatives" id="initiatives">
-        <div class="container">
-            <div class="section-title">
-                <h2>Our Initiatives</h2>
-                <p>Discover the key programs and projects we're implementing to protect our planet.</p>
+        <!-- About & Subscribe -->
+        <div class="about-section">
+            <div class="about-text">
+                <h2>🌻 About Little Sprout</h2>
+                <p>We're a team of child psychologists, early childhood educators, and moms who are passionate about evidence-based parenting. Here we share practical tips, book recommendations, playful learning activities, and developmental science. We believe every child grows at their own pace — our job is to provide rich soil.</p>
             </div>
-            <div class="initiatives-grid">
-                <div class="initiative-card">
-                    <div class="initiative-img">
-                        <img src="https://dialogue.earth/content/uploads/2021/04/lessons-from-the-rush-to-reforest-china-dialogue-2400x1599.jpg" alt="Reforestation">
-                    </div>
-                    <div class="initiative-content">
-                        <h3>Global Reforestation</h3>
-                        <p>Planting millions of trees worldwide to restore ecosystems, combat climate change, and protect biodiversity.</p>
-                        <a href="#" class="btn">Learn More</a>
-                    </div>
-                </div>
-                <div class="initiative-card">
-                    <div class="initiative-img">
-                        <img src="https://images.unsplash.com/photo-1621451537084-482c73073a0f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="Ocean Conservation">
-                    </div>
-                    <div class="initiative-content">
-                        <h3>Ocean Conservation</h3>
-                        <p>Protecting marine ecosystems, reducing plastic pollution, and promoting sustainable fishing practices.</p>
-                        <a href="#" class="btn">Learn More</a>
-                    </div>
-                </div>
-                <div class="initiative-card">
-                    <div class="initiative-img">
-                        <img src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2072&q=80" alt="Renewable Energy">
-                    </div>
-                    <div class="initiative-content">
-                        <h3>Renewable Energy</h3>
-                        <p>Promoting solar, wind, and other clean energy sources to reduce dependence on fossil fuels.</p>
-                        <a href="#" class="btn">Learn More</a>
-                    </div>
-                </div>
+            <div class="about-subscribe">
+                <h4>📬 Stay in Touch</h4>
+                <p>Get one weekly parenting insight delivered to your inbox — supporting families with children aged 0–6.</p>
+                <form class="subscribe-form" onsubmit="event.preventDefault(); alert('Thanks for subscribing! (demo)')">
+                    <input type="email" placeholder="Your email" required />
+                    <button type="submit">Subscribe</button>
+                </form>
             </div>
         </div>
-    </section>
 
-    <!-- CTA Section -->
-    <section class="cta" id="get-involved">
-        <div class="container">
-            <h2>Join Our Global Movement</h2>
-            <p>Together, we can create a sustainable future for generations to come. Every action counts, no matter how small.</p>
-            <a href="#" class="btn">Become a Member</a>
-        </div>
-    </section>
+    </div>
 
-    <!-- Footer -->
-    <footer id="contact">
+    <!-- ===== Footer ===== -->
+    <footer>
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-column">
-                    <h3>Green Network</h3>
-                    <p>We are dedicated to protecting our planet through collaborative action, education, and sustainable solutions.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-                <div class="footer-column">
-                    <h3>Quick Links</h3>
-                    <ul class="footer-links">
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#about">About Us</a></li>
-                        <li><a href="#initiatives">Initiatives</a></li>
-                        <li><a href="#get-involved">Get Involved</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>Our Programs</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">Reforestation</a></li>
-                        <li><a href="#">Ocean Cleanup</a></li>
-                        <li><a href="#">Wildlife Protection</a></li>
-                        <li><a href="#">Climate Education</a></li>
-                        <li><a href="#">Sustainable Agriculture</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>Contact Us</h3>
-                    <p><i class="fas fa-map-marker-alt"></i> Copper Creek Drive, New York</p>
-                    <p><i class="fas fa-phone"></i> +1 (312) 171-0771</p>
-                    <p><i class="fas fa-envelope"></i> support@greennetwork.org</p>
-                </div>
+            <div class="footer-col">
+                <h4>🌱 Little Sprout</h4>
+                <p style="max-width: 260px; color: #d4bfb2; font-size: 15px;">Accompanying the most important early years with love and knowledge.</p>
             </div>
-            <div class="copyright">
-                <p>&copy; 2025 Green Network. All rights reserved.</p>
+            <div class="footer-col">
+                <h4>Topics</h4>
+                <ul>
+                    <li><a href="#">Playful Learning</a></li>
+                    <li><a href="#">Emotional Guidance</a></li>
+                    <li><a href="#">Book Lists</a></li>
+                    <li><a href="#">Habits & Routines</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>About</h4>
+                <ul>
+                    <li><a href="#">Our Story</a></li>
+                    <li><a href="#">Expert Team</a></li>
+                    <li><a href="#">Join Us</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Connect</h4>
+                <div class="social">
+                    <a href="#" aria-label="WeChat">💬</a>
+                    <a href="#" aria-label="Weibo">📱</a>
+                    <a href="#" aria-label="Xiaohongshu">📕</a>
+                    <a href="#" aria-label="Email">✉️</a>
+                </div>
+                <p style="margin-top: 12px; font-size: 14px; color: #b89f8e;">hello@littlesprout.com</p>
+            </div>
+            <div class="footer-bottom">
+                © 2025 Little Sprout · Preschool Education Blog | Growing together, one small step at a time 🌸
             </div>
         </div>
     </footer>
 
+    <!-- ===== Mobile Menu Toggle ===== -->
     <script>
-        // Mobile Menu Toggle
-        document.querySelector('.mobile-menu').addEventListener('click', function() {
-            document.querySelector('nav ul').classList.toggle('active');
-        });
-
-        // Counter Animation
-        function animateCounters() {
-            const counters = document.querySelectorAll('.counter');
-            const speed = 200; // The lower the slower
-            
-            counters.forEach(counter => {
-                const target = +counter.getAttribute('data-target');
-                const count = +counter.innerText;
-                
-                const inc = target / speed;
-                
-                if(count < target) {
-                    counter.innerText = Math.ceil(count + inc);
-                    setTimeout(animateCounters, 1);
-                } else {
-                    counter.innerText = target;
-                }
-            });
-        }
-
-        // Initialize counters when page loads
-        window.addEventListener('load', animateCounters);
-
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if(targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if(targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
+        (function() {
+            const toggle = document.getElementById('menuToggle');
+            const nav = document.getElementById('navLinks');
+            if (toggle && nav) {
+                toggle.addEventListener('click', function() {
+                    nav.classList.toggle('open');
+                });
+                nav.querySelectorAll('a').forEach(function(link) {
+                    link.addEventListener('click', function() {
+                        nav.classList.remove('open');
                     });
-                    
-                    document.querySelector('nav ul').classList.remove('active');
-                }
-            });
-        });
+                });
+            }
+        })();
     </script>
-</body>
 
+</body>
 </html>
